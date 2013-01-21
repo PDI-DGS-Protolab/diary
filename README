@@ -1,0 +1,35 @@
+Aplicación Demo - diarIO
+========================
+
+
+Descripción
+-----------
+Diario para guardar eventos tipo: foto, nota, localización y Tweets que se hayan realizado ese día.
+
+Periódicamente llegará una notificación(push) preguntando por lo que estás haciendo.
+
+**Foto:** Capturar una imagen desde la cámara, guardar en sistema y asociar al día seleccionado.
+
+**Nota:** Crear un archivo, editarlo, guardar en sistema y asociar al día seleccionado. Se podrá añadir los datos de un usuario que exista en la agenda.
+
+**Localización:** Obtener la localización actual, guardar en webDB y asociarlo al día seleccionado
+
+**Tweet:** Listado de Tweets publicado el día seleccionado, Previamente se configurará el usuario del que se quiere obtener los Tweets publicados.
+
+
+
+Objetivo
+--------
+Applicación básica para poder estudiar la viabilidad tecnológica entre diferentes frameworks (wrappers) que realizan aplicación móviles basadas en HTML5
+
+**Ejemplo:** *Trigger.IO, CocoonJS, Phonegap, ...*
+
+
+Funcionalidades a utilizar
+--------------------------
+* HTPP (uso de API)
+* Camera
+* FileSystem
+* WebDB
+* Push
+* Agenda del móvil

@@ -1,0 +1,204 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <title>App for Evaluation</title>
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="cleartype" content="on">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="lib/lungo-26b2616805fc359f4b7ec7574b5f89c634eec91b/lungo.css">
+  <link rel="stylesheet" href="lib/lungo-26b2616805fc359f4b7ec7574b5f89c634eec91b/lungo.icon.css">
+  <link rel="stylesheet" href="lib/lungo-26b2616805fc359f4b7ec7574b5f89c634eec91b/lungo.icon.brand.css">
+  <link rel="stylesheet" href="lib/lungo-26b2616805fc359f4b7ec7574b5f89c634eec91b/lungo.theme.default.css">
+
+  <link rel="stylesheet" href="css/app.css">
+  <body class="app">
+    <!-- listado de días -->
+    <section id="main" data-transition="slide">
+      <header>
+        <span class="title centered">Calendario</span>
+    </header>
+
+      <article id="main-calendar" class="active indented list  scroll">
+        <ul>
+            <li class="arrow light">
+              <a href="#add" data-router="section">
+                <strong class="text bold">Lunes</strong>
+                <div class="text small">28/01</div>
+              </a>
+            </li>
+            <li class="arrow light">
+              <a href="#add" data-router="section">
+                <strong class="text bold">Martes</strong>
+                <div class="text small">29/01</div>
+              </a>
+            </li>
+            <li class="blue arrow">
+              <a href="#day" data-router="section">
+                <div class="right bubble blue" data-icon="clock">
+                  <span class="icon picture"></span>
+                  <span class="icon pencil"></span>
+                  <span class="icon pushpin"></span>
+                </div>
+                <strong class="text bold">Miercoles</strong>
+                <div class="text small">30/01</div>
+              <a href="#add" data-router="section">
+            </li>
+            <li class="arrow light">
+              <a href="#add" data-router="section">
+                <strong class="text bold">Jueves</strong>
+                <div class="text small">31/01</div>
+              </a>
+            </li>
+            <li class="anchor">Febrerro</li>
+            <li class="arrow light">
+              <a href="#add" data-router="section">
+                <strong class="text bold">Viernes</strong>
+                <div class="text small">01/02</div>
+              </a>
+            </li>
+            <li class="arrow light">
+              <a href="#add" data-router="section">
+                <strong class="text bold">Sábado</strong>
+                <div class="text small">02/02</div>
+              </a>
+            </li>
+            <li class="arrow light">
+              <a href="#add" data-router="section">
+                <strong class="text bold">Domingo</strong>
+                <div class="text small">03/02</div>
+                </a>
+            </li>
+            <li class="arrow light">
+              <a href="#add" data-router="section">
+                <strong class="text bold">Lunes</strong>
+                <div class="text small">04/02</div>
+                </a>
+            </li>
+            <li class="arrow light">
+              <a href="#add" data-router="section">
+                <strong class="text bold">Martes</strong>
+                <div class="text small">05/02</div>
+              </a>
+            </li>
+        </ul>
+      </article>
+    </section>
+    <!-- día seleccionado previamente, se rellena con lo que el usuario haya introducido anterior mente -->
+    <section id="day" data-transition="slide">
+      <header data-title="Día - 01/02" class="extended">
+        <nav class="box">
+          <a href="#back" data-router="section" data-icon="left"></a>
+        </nav>
+        <nav class="right box">
+            <a href="#add" data-router="section" data-icon="plus"></a>
+        </nav>
+      </header>
+      <nav class="groupbar">
+        <a href="#day-art1" data-router="article" data-label="Nota" class="active"></a>
+        <a href="#day-art2" data-router="article" data-label="Foto"></a>
+        <a href="#day-art3" data-router="article" data-label="Tweets"></a>
+        <a href="#day-art4" data-router="article" data-label="Posición"></a>
+      </nav>
+      <article id="day-art1" class="active indented list  scroll">
+        <ul>
+          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+          <li>In volutpat sem eget leo hendrerit mollis.</li>
+          <li>Quisque porttitor mattis ligula, non sagittis turpis tincidunt sed.</li>
+          <li>In ac ligula lorem, sit amet dignissim ante.</li>
+          <li>Vestibulum placerat congue nulla, at vehicula mi dignissim id.</li>
+        </ul>
+      </article>
+      <article id="day-art2" class="indented scroll">
+        <ul>
+          <li><img src="media/a.jpg" /><li>
+          <li><img src="media/b.jpg" /><li>
+          <li><img src="media/c.jpg" /><li>
+          <li><img src="media/d.jpg" /><li>
+          <li><img src="media/e.jpg" /><li>
+          <li><img src="media/f.jpg" /><li>
+        </ul>
+      </article>
+      <article id="day-art3" class="indented list  scroll">
+        <ul>
+          <li>
+            <strong class="text bold">@udo</strong>
+            <div>Donec vehicula varius ligula, in facilisis diam facilisis vestibulum.</div>
+          </li>
+          <li>
+            <strong class="text bold">@udo</strong>
+            <div>Morbi a metus at ligula venenatis iaculis.</div>
+          </li>
+          <li>
+            <strong class="text bold">@udo</strong>
+            <div>Phasellus imperdiet malesuada magna, sed interdum sem laoreet sed.</div>
+          </li>
+          <li>
+            <strong class="text bold">@udo</strong>
+            <div>Sed tempus turpis nec nulla volutpat dictum nec quis justo.</div>
+          </li>
+          <li>
+            <strong class="text bold">@udo</strong>
+            <div>Etiam a massa eget mi consectetur venenatis.</div>
+          </li>
+          <li>
+            <strong class="text bold">@udo</strong>
+            <div>Donec pulvinar consectetur massa, ut tristique augue gravida eu.</div>
+          </li>
+        </ul>
+      </article>
+      <article id="day-art4">
+        <img src="http://maps.googleapis.com/maps/api/staticmap?size=512x512&maptype=roadmap&markers=size:mid%7Ccolor:red%7CSan+Francisco,CA%7COakland,CA%7CSan+Jose,CA&sensor=false"/>
+      </article>
+    </section>
+
+    <!-- Crear nuevas "notas" asociadas a un día -->
+    <section id="add" data-transition="slide">
+        <header data-title="Crear - 01/02" class="extended">
+            <nav class="box">
+                <a href="#back" data-router="section" data-icon="left"></a>
+            </nav>
+        </header>
+
+        <nav class="groupbar">
+            <a href="#add-art1" data-router="article" data-label="Nota" class="active"></a>
+            <a href="#add-art2" data-router="article" data-label="Foto"></a>
+            <a href="#add-art3" data-router="article" data-label="Posición"></a>
+        </nav>
+
+        <article id="add-art1" class="active indented">
+          <form action=".">
+            <textarea></textarea>
+            <a href="#" class="button accept">Guardar</a>
+          </form>
+        </article>
+        <article id="add-art2" class="indented">
+          <a href="#" class="button accept">Abrir cámara</a>
+        </article>
+        <article id="add-art3" class="indented">
+          <dl>
+            <dt>Lat</dt>
+            <dd>3.245</dd>
+            <dt>Lng</dt>
+            <dd>6.34525234</dd>
+          </dl>
+          <a href="#" class="button accept">Guardar</a>
+        </article>
+    </section>
+
+
+    <!-- Lungo - Dependencies -->
+    <script src="lib/quojs/quo.debug.js"></script>
+    <script src="lib/lungo-26b2616805fc359f4b7ec7574b5f89c634eec91b/lungo.debug.js"></script>
+    <!-- Angular Dependencies -->
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/lungojs-angular-adapter.0.0.1.js"></script>
+
+    <script type="text/javascript" src="script/app.js"></script>
+  </body>
+</html>
