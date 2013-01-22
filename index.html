@@ -19,78 +19,41 @@
   <link rel="stylesheet" href="css/app.css">
   <body class="app">
     <!-- listado de días -->
-    <section id="main" data-transition="slide">
+    <section id="main" data-transition="slide" ng-controller="calendar">
       <header>
         <span class="title centered">Calendario</span>
-    </header>
+      </header>
 
       <article id="main-calendar" class="active indented list  scroll">
         <ul>
-            <li class="arrow light">
-              <a href="#add" data-router="section">
-                <strong class="text bold">Lunes</strong>
-                <div class="text small">28/01</div>
-              </a>
-            </li>
-            <li class="arrow light">
-              <a href="#add" data-router="section">
-                <strong class="text bold">Martes</strong>
-                <div class="text small">29/01</div>
-              </a>
-            </li>
-            <li class="blue arrow">
-              <a href="#day" data-router="section">
-                <div class="right bubble blue" data-icon="clock">
-                  <span class="icon picture"></span>
-                  <span class="icon pencil"></span>
-                  <span class="icon pushpin"></span>
-                </div>
-                <strong class="text bold">Miercoles</strong>
-                <div class="text small">30/01</div>
-              <a href="#add" data-router="section">
-            </li>
-            <li class="arrow light">
-              <a href="#add" data-router="section">
-                <strong class="text bold">Jueves</strong>
-                <div class="text small">31/01</div>
-              </a>
-            </li>
-            <li class="anchor">Febrerro</li>
-            <li class="arrow light">
-              <a href="#add" data-router="section">
-                <strong class="text bold">Viernes</strong>
-                <div class="text small">01/02</div>
-              </a>
-            </li>
-            <li class="arrow light">
-              <a href="#add" data-router="section">
-                <strong class="text bold">Sábado</strong>
-                <div class="text small">02/02</div>
-              </a>
-            </li>
-            <li class="arrow light">
-              <a href="#add" data-router="section">
-                <strong class="text bold">Domingo</strong>
-                <div class="text small">03/02</div>
-                </a>
-            </li>
-            <li class="arrow light">
-              <a href="#add" data-router="section">
-                <strong class="text bold">Lunes</strong>
-                <div class="text small">04/02</div>
-                </a>
-            </li>
-            <li class="arrow light">
-              <a href="#add" data-router="section">
-                <strong class="text bold">Martes</strong>
-                <div class="text small">05/02</div>
-              </a>
-            </li>
+          <li class="arrow" ng-repeat="day in enero" ng-class="toggleIfDayHasItem(day.dayId, 'arrow', 'light')">
+            <a data-router="section" day="day.dayId" ng-href="{{toggleIfDayHasItem(day.dayId, '#day', '#add')}}">
+              <div class="right bubble blue" ng-show="dayHasItem(day.dayId)" >
+                <span class="icon picture" ng-show="listItemWithDay.photo[day.dayId]"></span>
+                <span class="icon pencil" ng-show="listItemWithDay.note[day.dayId]"></span>
+                <span class="icon pushpin" ng-show="listItemWithDay.position[day.dayId]"></span>
+              </div>
+              <strong class="text bold">{{WEEK_DAY_NAME[day.dayWeek]}}</strong>
+              <div class="text small">{{day.dayId}}</div>
+            </a>
+          </li>
+          <li class="anchor">Febrerro</li>
+          <li class="arrow" ng-repeat="day in febrero" ng-class="toggleIfDayHasItem(day.dayId, 'arrow', 'light')">
+            <a data-router="section" day="day.dayId" ng-href="{{toggleIfDayHasItem(day.dayId, '#day', '#add')}}">
+              <div class="right bubble blue" ng-show="dayHasItem(day.dayId)" >
+                <span class="icon picture" ng-show="listItemWithDay.photo[day.dayId]"></span>
+                <span class="icon pencil" ng-show="listItemWithDay.note[day.dayId]"></span>
+                <span class="icon pushpin" ng-show="listItemWithDay.position[day.dayId]"></span>
+              </div>
+              <strong class="text bold">{{WEEK_DAY_NAME[day.dayWeek]}}</strong>
+              <div class="text small">{{day.dayId}}</div>
+            </a>
+          </li>
         </ul>
       </article>
     </section>
     <!-- día seleccionado previamente, se rellena con lo que el usuario haya introducido anterior mente -->
-    <section id="day" data-transition="slide">
+    <section id="day" data-transition="slide" ng-controller="day">
       <header data-title="Día - 01/02" class="extended">
         <nav class="box">
           <a href="#back" data-router="section" data-icon="left"></a>
@@ -107,11 +70,10 @@
       </nav>
       <article id="day-art1" class="active indented list  scroll">
         <ul>
-          <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-          <li>In volutpat sem eget leo hendrerit mollis.</li>
-          <li>Quisque porttitor mattis ligula, non sagittis turpis tincidunt sed.</li>
-          <li>In ac ligula lorem, sit amet dignissim ante.</li>
-          <li>Vestibulum placerat congue nulla, at vehicula mi dignissim id.</li>
+          <li ng-show="item.note.length == 0" data-icon="warning">
+            <i>Añade una nota</i>
+          </li>
+          <li ng-repeat="note in item.note">{{note.note}}</li>
         </ul>
       </article>
       <article id="day-art2" class="indented scroll">
@@ -152,13 +114,22 @@
           </li>
         </ul>
       </article>
-      <article id="day-art4">
-        <img src="http://maps.googleapis.com/maps/api/staticmap?size=512x512&maptype=roadmap&markers=size:mid%7Ccolor:red%7CSan+Francisco,CA%7COakland,CA%7CSan+Jose,CA&sensor=false"/>
+      <article id="day-art4" class="indented list  scroll">
+        <ul>
+          <li ng-show="item.position.length == 0" data-icon="warning">
+            <i>Añade una posición</i>
+          </li>
+          <li ng-repeat="position in item.position">
+            <div>
+              <img ng-src="http://maps.googleapis.com/maps/api/staticmap?size=300x100&maptype=roadmap&markers=color:blue%7C{{position.latlng}}&sensor=false"/>
+            </div>
+          </li>
+        </ul>
       </article>
     </section>
 
     <!-- Crear nuevas "notas" asociadas a un día -->
-    <section id="add" data-transition="slide">
+    <section id="add" data-transition="slide" ng-controller="add">
         <header data-title="Crear - 01/02" class="extended">
             <nav class="box">
                 <a href="#back" data-router="section" data-icon="left"></a>
@@ -168,26 +139,26 @@
         <nav class="groupbar">
             <a href="#add-art1" data-router="article" data-label="Nota" class="active"></a>
             <a href="#add-art2" data-router="article" data-label="Foto"></a>
-            <a href="#add-art3" data-router="article" data-label="Posición"></a>
+            <a href="#add-art3" data-router="article" data-label="Posición" ng-click="setLocation()"></a>
         </nav>
 
         <article id="add-art1" class="active indented">
           <form action=".">
-            <textarea></textarea>
-            <a href="#" class="button accept">Guardar</a>
+            <textarea ng-model="data.note"></textarea>
+            <a href="#" class="button accept" ng-click="addNote()">Guardar</a>
           </form>
         </article>
         <article id="add-art2" class="indented">
           <a href="#" class="button accept">Abrir cámara</a>
         </article>
         <article id="add-art3" class="indented">
-          <dl>
-            <dt>Lat</dt>
-            <dd>3.245</dd>
-            <dt>Lng</dt>
-            <dd>6.34525234</dd>
-          </dl>
-          <a href="#" class="button accept">Guardar</a>
+          <form action=".">
+            <dl>
+              <dt>Coordenadas cartesianas</dt>
+              <dd> <input type="text" name="position" ng-model="data.position" /> </dd>
+            </dl>
+            <a href="#" class="button accept" ng-click="addPosition()">Guardar</a>
+          </form>
         </article>
     </section>
 
@@ -200,5 +171,12 @@
     <script type="text/javascript" src="lib/lungojs-angular-adapter.0.0.1.js"></script>
 
     <script type="text/javascript" src="script/app.js"></script>
+    <script type="text/javascript" src="script/controller/add.js"></script>
+    <script type="text/javascript" src="script/controller/calendar.js"></script>
+    <script type="text/javascript" src="script/controller/day.js"></script>
+
+    <script type="text/javascript" src="script/directive/day.js"></script>
+
+    <script type="text/javascript" src="script/service/webdb.js"></script>
   </body>
 </html>

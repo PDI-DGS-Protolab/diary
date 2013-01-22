@@ -1,1 +1,1 @@
-angular.module('app', ['lungo']);
+angular.module('app', ['lungo']).value('quo', Quo);
