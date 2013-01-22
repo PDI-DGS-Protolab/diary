@@ -9,7 +9,7 @@ angular.module('app').controller('day',['$rootScope', '$scope', 'webdb',function
   var _updateItem = function(){
     var day = rootScope.currentDay;
     if(day){
-      item = _getItem(day);git
+      item = _getItem(day);
     }
   };
 
