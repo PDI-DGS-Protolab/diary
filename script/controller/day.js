@@ -3,6 +3,7 @@ angular.module('app').controller('day',['$rootScope', '$scope', 'webdb',function
   var init = function(){
     scope.item = item;
     rootScope.$on('changeCurrentDay', _updateItem);
+    rootScope.$on('addItem', _updateItem);
     scope.$on("loadCollectionFromRs", _applyChangeInFront);
   };
 
